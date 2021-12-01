@@ -21,6 +21,11 @@ This repository also requires the following:
 - `python3 ` 3.7
 - `java` 1.8.0
 
+Kindly run following command for building purposes-
+```
+cd sempre/fig && gradle build && cd .. && ant && ant compile && cd ..
+```
+
 ##### `$trained_model`
 
 I provided the pre-trained model for the two benchmarks datasets:
@@ -33,10 +38,17 @@ I provided the pre-trained model for the two benchmarks datasets:
 
 We also provide a way to run Regel interactively (i.e. allowing users to interact with Regel by providing examples to refine the synthesis results).
 
-### Run Interactive Mode with Benchmark Set
+### Run Interactive Mode with Arbituary Natural Language and Examples ("Customize" Mode)
 
 ```shell
-python interactive.py --run_mode 1 --benchmark $your_benchmark_domain --synth_mode $synthesis_mode --process_num $number_of_process_allowed --mem_max $max_memory_allowed --top $top_k_results_allowed --timeout $timeout_for_each_benchmark --max_iter $max_iter --save_history $save_history
+python interactive.py --run_mode 0 --synth_mode $synthesis_mode --process_num $number_of_process_allowed --mem_max $max_memory_allowed --top $top_k_results_allowed --timeout $timeout_for_each_benchmark --max_iter $max_iter --skecth_num $number_of_sketch_per_benchmark --save_history $save_history
+```
+
+Example-
+
+You may test the program with following command-
+```
+python interactive.py --run_mode 0 --synth_mode 1 --processnum 1 --mem_max 20 --top 5 --timeout 60 --max_iter 5 --sketch_num 25
 ```
 
 ##### `$top_k_results_allowed`
@@ -50,12 +62,6 @@ The interactive Regel allows you to stop at any point working and continue from 
 ##### `$max_iter`
 
 The maximum of interaction allowed for each benchmark. 
-
-### Run Interactive Mode with Arbituary Natural Language and Examples ("Customize" Mode)
-
-```shell
-python interactive.py --run_mode 0 --synth_mode $synthesis_mode --process_num $number_of_process_allowed --mem_max $max_memory_allowed --top $top_k_results_allowed --timeout $timeout_for_each_benchmark --max_iter $max_iter --skecth_num $number_of_sketch_per_benchmark --save_history $save_history
-```
 
 #### The workflow of the interactive script (customize mode):
 
